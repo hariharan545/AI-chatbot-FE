@@ -1,10 +1,11 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import axios from 'axios';
+import apiClient, { getApiBaseUrl } from '../../config/axios';
 import { authActions, User } from './authSlice';
 
 function* handleGoogleLogin() {
   try {
-    window.location.href = '/api/auth/google';
+    const apiBaseUrl = getApiBaseUrl();
+    window.location.href = `${apiBaseUrl}/api/auth/google`;
   } catch {
     yield put(authActions.googleLoginFailure());
   }
@@ -12,9 +13,7 @@ function* handleGoogleLogin() {
 
 function* handleLoadMe() {
   try {
-    const response: { data: User } = yield call(axios.get, '/api/me', {
-      withCredentials: true
-    });
+    const response: { data: User } = yield call(apiClient.get, '/api/me');
     yield put(authActions.meLoaded(response.data));
   } catch {
     yield put(authActions.meLoaded(null));
