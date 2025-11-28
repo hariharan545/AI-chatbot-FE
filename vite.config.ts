@@ -8,11 +8,11 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/api': {
-        target: 'https://ai-chatbot-be-1.onrender.com',
+        target: 'https://ai-chatbot-be-2.onrender.com',
         changeOrigin: true
       },
       '/ws': {
-        target: 'ws://ai-chatbot-be-1.onrender.com',
+        target: 'ws://ai-chatbot-be-2.onrender.com',
         ws: true
       }
     }
