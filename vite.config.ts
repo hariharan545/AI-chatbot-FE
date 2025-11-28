@@ -7,11 +7,11 @@ export default defineConfig({
     port: 5173,
     proxy: {
       '/api': {
-        target: 'http://localhost:5000',
+        target: 'https://ai-chatbot-tau-beige.vercel.app',
         changeOrigin: true
       },
       '/ws': {
-        target: 'ws://localhost:5000',
+        target: 'ws://ai-chatbot-be-1.onrender.com',
         ws: true
       }
     }
